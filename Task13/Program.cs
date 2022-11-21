@@ -5,17 +5,30 @@
 // 78 -> третьей цифры нет
 // 32679 -> 6
 
-int number = new Random().Next(10, 100001);
+int number = new Random().Next(-99999, 100001);
 Console.WriteLine(number);
-int last_digit = 0;
-if (number < 100)
+
+int lastDigit = 0;
+if (number < 100 && number > -100)
 {
     Console.WriteLine("третьей цифры нет");
 }
-else {
-    while (number > 99) {
-        last_digit = number%10;
+else if (number > 99)
+{
+    while (number > 99)
+    {
+        lastDigit = number % 10;
         number = number / 10;
     }
+    Console.WriteLine(lastDigit);
 }
-Console.WriteLine(last_digit);
+else if (number < -99)
+{
+    while (number < -99)
+    {
+        lastDigit = number % 10;
+        number = number / 10;
+    }
+    Console.WriteLine(lastDigit * -1);
+}
+
